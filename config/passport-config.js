@@ -4,9 +4,7 @@ const User = require('../models/User')
 const GitHubStrategy = require('passport-github2').Strategy;
 
 module.exports = function (passport) {
-
   passport.serializeUser((user, done) => {
-    console.log('user id:', user.id)
     done(null, user.id)
   })
 

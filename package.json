@@ -15,7 +15,6 @@
     "connect-mongo": "^4.4.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-limit": "^0.1.0",
     "express-session": "^1.17.2",
     "mongoose": "^5.13.2",
     "mongoose-findorcreate": "^3.0.0",

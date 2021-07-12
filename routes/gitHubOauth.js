@@ -1,12 +1,7 @@
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
-const limit = require('express-limit').limit;
 
-const limitRoute = limit({
-  max: 5,        // 5 requests
-  period: 60 * 1000 // per minute (60 seconds)
-})
 // @desc    Auth with github
 // @route   GET /auth/github
 router.route('/')
@@ -17,12 +12,12 @@ router.route('/')
 // @route   post /auth/github/callback
 router.route('/callback')
   .post(passport.authenticate('github',
-    { failureRedirect: '/auth/github/failed' }), limitRoute,
+    { failureRedirect: '/auth/github/failed' }),
     (req, res) => {
       res.redirect('/')
     }
   )
-  .get(passport.authenticate('github', { failureRedirect: '/auth/github/failed' }), limitRoute,
+  .get(passport.authenticate('github', { failureRedirect: '/auth/github/failed' }),
     (req, res) => {
       res.redirect('/')
     }

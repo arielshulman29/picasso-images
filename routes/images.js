@@ -16,9 +16,9 @@ router.route('/')
                 large: `${{ ...req.files[0] }.transforms[2].location}`
             })
     })
-        .get(isLoggedIn, (req, res) => {
-            res.send(`${req.user.username} is logged in`)
-        })
+    .get(isLoggedIn, (req, res) => {
+        res.send(`${req.user.username} is logged in`)
+    })
 
 
-        module.exports = router;
+module.exports = router;
