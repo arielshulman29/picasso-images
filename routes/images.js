@@ -1,22 +1,24 @@
 const express = require("express");
+const passport = require("passport");
 const router = express.Router();
-const catchAsync = require('../utils/catchAsync');
 const upload = require('../utils/upload');
+const { isLoggedIn } = require('../middleware')
 
 
 router.route('/')
-    // .post(isLoggedIn,catchAsync(furniture.createNewRoom))
+    // .post(isLoggedIn, upload.array('image'), function (req, res, next) {
     .post(upload.array('image'), function (req, res, next) {
-        console.log('Uploaded!');
-        if (req.files) {
-            res.send(req.files);
-        }
-        else {
-            if (req.file) {
-                res.send(req.file);
-            }
-        }
+        res.status(201).json(
+            {
+                message: "Files uploaded successfully!",
+                thumb: `${{ ...req.files[0] }.transforms[0].location}`,
+                medium: `${{ ...req.files[0] }.transforms[1].location}`,
+                large: `${{ ...req.files[0] }.transforms[2].location}`
+            })
     })
+        .get(isLoggedIn, (req, res) => {
+            res.send(`${req.user.username} is logged in`)
+        })
 
-    
-module.exports = router;
+
+        module.exports = router;

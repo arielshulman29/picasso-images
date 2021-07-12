@@ -10,8 +10,6 @@ const options = {
     region: process.env.AWS_REGION
 }
 
-
-
 const s3Config = new AWS.S3(options);
 
 const fileFilter = (req, file, cb) => {
