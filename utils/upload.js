@@ -2,6 +2,7 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 const sharp = require('sharp');
 var multerS3 = require('multer-s3-transform')
+const ExpressError=require('./ExpressError')
 
 const options = {
     accessKeyId: process.env.AWS_IAM_USER_KEY,
@@ -15,7 +16,7 @@ const fileFilter = (req, file, cb) => {
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         cb(null, true)
     } else {
-        return cb(new Error('Only jpg/jpeg files are allowed'),false)
+        return cb(new ExpressError('Only jpg/jpeg files are allowed',422))
     }
 }
 
