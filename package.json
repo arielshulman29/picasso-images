@@ -22,7 +22,7 @@
     "multer-s3-transform": "^2.10.3",
     "passport": "^0.4.1",
     "passport-github2": "^0.1.12",
-    "sharp": "^0.28.3"
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
     "mocha": "^9.0.2"
